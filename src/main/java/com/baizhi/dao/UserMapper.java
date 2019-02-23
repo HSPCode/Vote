@@ -1,6 +1,7 @@
 package com.baizhi.dao;
 
 import com.baizhi.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer vuUserId);
@@ -14,4 +15,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectUserByName(@Param("name") String name);
 }

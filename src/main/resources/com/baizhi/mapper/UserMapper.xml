@@ -20,6 +20,12 @@
         from vote_user
         where vu_user_id = #{vuUserId,jdbcType=INTEGER}
     </select>
+    <select id="selectUserByName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from vote_user
+        where vu_user_name like #{name}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete
         from vote_user
