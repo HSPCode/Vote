@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.baizhi.entity.User" >
+    <id column="vu_user_id" property="vuUserId" jdbcType="VARCHAR" />
+    <result column="vu_user_name" property="vuUserName" jdbcType="VARCHAR" />
+    <result column="vu_password" property="vuPassword" jdbcType="VARCHAR" />
+    <result column="vu_status" property="vuStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    vu_user_id, vu_user_name, vu_password, vu_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from vote_user
+    where vu_user_id = #{vuUserId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from vote_user
+    where vu_user_id = #{vuUserId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.baizhi.entity.User" >
+    insert into vote_user (vu_user_id, vu_user_name, vu_password, 
+      vu_status)
+    values (#{vuUserId,jdbcType=VARCHAR}, #{vuUserName,jdbcType=VARCHAR}, #{vuPassword,jdbcType=VARCHAR}, 
+      #{vuStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baizhi.entity.User" >
+    insert into vote_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vuUserId != null" >
+        vu_user_id,
+      </if>
+      <if test="vuUserName != null" >
+        vu_user_name,
+      </if>
+      <if test="vuPassword != null" >
+        vu_password,
+      </if>
+      <if test="vuStatus != null" >
+        vu_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vuUserId != null" >
+        #{vuUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="vuUserName != null" >
+        #{vuUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="vuPassword != null" >
+        #{vuPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="vuStatus != null" >
+        #{vuStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baizhi.entity.User" >
+    update vote_user
+    <set >
+      <if test="vuUserName != null" >
+        vu_user_name = #{vuUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="vuPassword != null" >
+        vu_password = #{vuPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="vuStatus != null" >
+        vu_status = #{vuStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where vu_user_id = #{vuUserId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baizhi.entity.User" >
+    update vote_user
+    set vu_user_name = #{vuUserName,jdbcType=VARCHAR},
+      vu_password = #{vuPassword,jdbcType=VARCHAR},
+      vu_status = #{vuStatus,jdbcType=INTEGER}
+    where vu_user_id = #{vuUserId,jdbcType=VARCHAR}
+  </update>
+</mapper>

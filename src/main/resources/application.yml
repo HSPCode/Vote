@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/vote
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: admins
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /
+server:
+  jsp-servlet:
+    init-parameters:
+      development: true
+  port: 9999
+  context-path: /Vote
+mybatis:
+  mapper-locations: classpath:/com/baizhi/mapper/*.xml
+  type-aliases-package: com.baizhi.entity
