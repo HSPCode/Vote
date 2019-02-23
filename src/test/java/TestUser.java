@@ -8,6 +8,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class TestUser {
     @Test
     public void test1() {
-
+        System.out.println("123");
     }
 }
