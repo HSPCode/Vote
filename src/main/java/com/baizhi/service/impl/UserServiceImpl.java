@@ -36,4 +36,9 @@ public class UserServiceImpl implements UserService {
         session.setAttribute("user", u);
         return map;
     }
+
+    @Override
+    public void regist(User user) {
+        userMapper.insert(user);
+    }
 }

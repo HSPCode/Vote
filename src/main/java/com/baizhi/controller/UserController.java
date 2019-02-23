@@ -21,4 +21,10 @@ public class UserController {
         return userService.login(user, session);
     }
 
+
+    @RequestMapping("/regist")
+    public Object regist(User user) {
+        userService.regist(user);
+        return "redirect:/login.jsp";
+    }
 }
