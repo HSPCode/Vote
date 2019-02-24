@@ -3,7 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/vote
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
-    password: admins
+    password: root
     driver-class-name: com.mysql.jdbc.Driver
   mvc:
     view:
